@@ -1,0 +1,12 @@
+name: cron
+on:
+  schedule:
+    - cron: "0 * * * *"
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl --request GET \
+          --url 'https://yoursite.com/api/cron' \
+          --header 'Authorization: Bearer ${{ secrets.API_SECRET_KEY }}'

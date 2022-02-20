@@ -9,9 +9,6 @@ const {
   TWILIO_SMS_TO,
 } = process.env;
 
-const cron = require("node-cron");
-const twilio = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
-
 let headers = new Headers();
 headers.append("Content-Type", "application/json");
 
@@ -48,36 +45,32 @@ const options = {
   method: "POST",
 };
 
-function sendSMS(body) {
-  twilio.messages
-    .create({
-      body,
-      from: TWILIO_SMS_FROM,
-      to: TWILIO_SMS_TO,
-    })
-    .catch((error) => console.error(error));
-}
+const express = require("express");
+const twilio = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-function search() {
-  fetch("https://fp.trafikverket.se/boka/occasion-bundles", options)
-    .then((response) => response.json())
-    .then(({ data }) => {
-      const earliestDateAvailable = data?.bundles[0]?.occasions[0]?.date;
-      COMPARE_DATE > earliestDateAvailable
-        ? sendSMS(earliestDateAvailable)
-        : null;
-    })
-    .catch((error) => console.error(error));
-}
+const app = express();
 
-// * * * * * *
-// | | | | | |
-// | | | | | day of week
-// | | | | month
-// | | | day of month
-// | | hour
-// | minute
-// second (optional)
-cron.schedule("0 * * * *", function () {
-  search();
+app.get("/api/search-occasions", async (req, res) => {
+  try {
+    fetch("https://fp.trafikverket.se/boka/occasion-bundles", options)
+      .then((response) => response.json())
+      .then(({ data }) => {
+        const earliestDateAvailable = data?.bundles[0]?.occasions[0]?.date;
+
+        if (COMPARE_DATE > earliestDateAvailable) {
+          twilio.messages.create({
+            body: earliestDateAvailable,
+            from: TWILIO_SMS_FROM,
+            to: TWILIO_SMS_TO,
+          });
+        }
+      });
+    res.status(200).send("200 OK");
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("500 Internal Server Error");
+  }
 });
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.info(`Server is running on port ${PORT}`));
