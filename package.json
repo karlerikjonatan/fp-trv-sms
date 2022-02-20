@@ -4,7 +4,7 @@
   "description": "Send a text message when a driving test occasion is available.",
   "main": "index.js",
   "scripts": {
-    "start": "node --experimental-fetch index.js"
+    "start": "node --experimental-fetch ./api/index.js"
   },
   "repository": {
     "type": "git",
