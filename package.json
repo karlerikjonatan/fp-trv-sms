@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/karlerikjonatan/trafikverket-boka-forarprov-sms#readme",
   "dependencies": {
+    "axios": "^0.26.0",
     "dotenv-flow": "^3.2.0",
     "node-fetch": "^2",
     "twilio": "^3.74.0"

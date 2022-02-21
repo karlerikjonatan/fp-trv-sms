@@ -1,12 +1,10 @@
-const fetch = require("node-fetch");
-
+const axios = require("axios");
 const API_ENDPOINT = "https://goweather.herokuapp.com/weather/stockholm";
 
 exports.handler = async (event, context) => {
   let response;
   try {
-    response = await fetch(API_ENDPOINT);
-    // handle response
+    response = await axios.get(API_ENDPOINT);
   } catch (err) {
     return {
       statusCode: err.statusCode || 500,
@@ -19,7 +17,7 @@ exports.handler = async (event, context) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      data: response,
+      data: response.data,
     }),
   };
 };
