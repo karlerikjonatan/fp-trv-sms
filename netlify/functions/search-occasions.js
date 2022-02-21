@@ -50,6 +50,7 @@ const twilio = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 exports.handler = async function (event, context) {
   try {
+    console.log("search-occasions.try", error);
     fetch("https://fp.trafikverket.se/boka/occasion-bundles", options)
       .then((response) => response.json())
       .then(({ data }) => {
@@ -63,14 +64,15 @@ exports.handler = async function (event, context) {
         }
       });
   } catch (error) {
+    console.log("search-occasions.catch", error);
     return {
       statusCode: 500,
-      body: "500 Internal Server Error",
+      body: JSON.stringify({ message: "500 Internal Server Error" }),
     };
   }
 
   return {
     statusCode: 200,
-    body: "200 OK",
+    body: JSON.stringify({ message: "200 OK" }),
   };
 };
