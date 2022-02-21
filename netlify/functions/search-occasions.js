@@ -45,18 +45,15 @@ const options = {
   method: "POST",
 };
 
-const express = require("express");
+const fetch = require("node-fetch");
 const twilio = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-const app = express();
-
-app.get("/api/search-occasions", async (req, res) => {
+exports.handler = async () => {
   try {
     fetch("https://fp.trafikverket.se/boka/occasion-bundles", options)
       .then((response) => response.json())
       .then(({ data }) => {
         const earliestDateAvailable = data?.bundles[0]?.occasions[0]?.date;
-
         if (COMPARE_DATE > earliestDateAvailable) {
           twilio.messages.create({
             body: earliestDateAvailable,
@@ -65,11 +62,15 @@ app.get("/api/search-occasions", async (req, res) => {
           });
         }
       });
-    res.status(200).send("200 OK");
   } catch (error) {
-    console.error(error);
-    return res.status(500).send("500 Internal Server Error");
+    return {
+      statusCode: 500,
+      body: "500 Internal Server Error",
+    };
   }
-});
 
-module.exports = app;
+  return {
+    statusCode: 200,
+    body: "200 OK",
+  };
+};

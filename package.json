@@ -3,18 +3,14 @@
   "version": "1.0.0",
   "description": "Send a text message when a driving test occasion is available.",
   "main": "index.js",
-  "scripts": {
-    "start": "node --experimental-fetch ./api/index.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/karlerikjonatan/trafikverket-boka-forarprov-sms.git"
   },
   "keywords": [
-    "expressjs",
+    "netlify",
     "nodejs",
-    "twilio",
-    "vercel"
+    "twilio"
   ],
   "author": "Jonatan Pettersson <pettersson.jonatan@gmail.com>",
   "license": "MIT",
@@ -24,10 +20,7 @@
   "homepage": "https://github.com/karlerikjonatan/trafikverket-boka-forarprov-sms#readme",
   "dependencies": {
     "dotenv-flow": "^3.2.0",
-    "express": "^4.17.3",
+    "node-fetch": "^3.2.0",
     "twilio": "^3.74.0"
-  },
-  "devDependencies": {
-    "vercel": "^24.0.0"
   }
 }
