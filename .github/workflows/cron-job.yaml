@@ -8,4 +8,4 @@ jobs:
     steps:
       - run: |
           curl --request GET \
-          --url '${{ secrets.API_ENDPOINT }}'
+          --url '${{ secrets.NETLIFY_API_ENDPOINT }}'
