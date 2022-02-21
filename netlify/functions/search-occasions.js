@@ -66,12 +66,13 @@ exports.handler = async () => {
         }
         resolve(RESOLVE_200);
       })
-      .then((date) => {
-        return await twilio.messages.create({
+      .then(async (date) => {
+        const message = await twilio.messages.create({
           body: date,
           from: TWILIO_SMS_FROM,
           to: TWILIO_SMS_TO,
         });
+        return message;
       })
       .then(() => resolve(RESOLVE_200))
       .catch(() => resolve(RESOLVE_500));
