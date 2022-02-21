@@ -1,6 +1,7 @@
 const {
   COMPARE_DATE,
   SOCIAL_SECURITY_NUMBER,
+  TRAFIKVERKET_API_ENDPOINT,
   TWILIO_ACCOUNT_SID,
   TWILIO_AUTH_TOKEN,
   TWILIO_SMS_FROM,
@@ -49,7 +50,7 @@ const twilio = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 exports.handler = async () => {
   return new Promise((resolve, _) => {
-    fetch("https://fp.trafikverket.se/boka/occasion-bundles", {
+    fetch(TRAFIKVERKET_API_ENDPOINT, {
       body,
       headers: { "Content-Type": "application/json" },
       method: "POST",
