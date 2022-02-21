@@ -61,6 +61,7 @@ exports.handler = async () => {
         resolve({ statusCode: res.status || 500, body: res.statusText });
       })
       .then((data) => {
+        console.log(JSON.stringify(data));
         // if (COMPARE_DATE > data?.bundles[0]?.occasions[0]?.date) {
         //   // twilio.messages.create({
         //   //   body: data?.bundles[0]?.occasions[0]?.date,
