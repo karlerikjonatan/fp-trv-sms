@@ -17,9 +17,6 @@ const RESOLVE_500 = {
   body: "500 INTERNAL SERVER ERROR",
 };
 
-let headers = new Headers();
-headers.append("Content-Type", "application/json");
-
 const body = JSON.stringify({
   bookingSession: {
     socialSecurityNumber: SOCIAL_SECURITY_NUMBER,
@@ -47,18 +44,16 @@ const body = JSON.stringify({
   },
 });
 
-const options = {
-  body,
-  headers,
-  method: "POST",
-};
-
 const fetch = require("node-fetch");
 const twilio = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 exports.handler = async () => {
   return new Promise((resolve, _) => {
-    fetch("https://fp.trafikverket.se/boka/occasion-bundles", options)
+    fetch("https://fp.trafikverket.se/boka/occasion-bundles", {
+      body,
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -67,11 +62,11 @@ exports.handler = async () => {
       })
       .then((data) => {
         if (COMPARE_DATE > data?.bundles[0]?.occasions[0]?.date) {
-          twilio.messages.create({
-            body: data?.bundles[0]?.occasions[0]?.date,
-            from: TWILIO_SMS_FROM,
-            to: TWILIO_SMS_TO,
-          });
+          // twilio.messages.create({
+          //   body: data?.bundles[0]?.occasions[0]?.date,
+          //   from: TWILIO_SMS_FROM,
+          //   to: TWILIO_SMS_TO,
+          // });
         }
         resolve(RESOLVE_200);
       })
