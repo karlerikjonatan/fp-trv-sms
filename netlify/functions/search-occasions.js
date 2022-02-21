@@ -62,20 +62,16 @@ exports.handler = async () => {
       })
       .then(({ data }) => {
         if (COMPARE_DATE < data?.bundles[0]?.occasions[0]?.date) {
-          console.log(
-            "data?.bundles[0]?.occasions[0]?.date",
-            data?.bundles[0]?.occasions[0]?.date
-          );
-          twilio.messages.create({
-            body: data?.bundles[0]?.occasions[0]?.date,
-            from: TWILIO_SMS_FROM,
-            to: TWILIO_SMS_TO,
-          });
+          twilio.messages
+            .create({
+              body: data?.bundles[0]?.occasions[0]?.date,
+              from: TWILIO_SMS_FROM,
+              to: TWILIO_SMS_TO,
+            })
+            .then(() => resolve(RESOLVE_200));
         }
         resolve(RESOLVE_200);
       })
-      .catch(() => {
-        resolve(RESOLVE_500);
-      });
+      .catch(() => resolve(RESOLVE_500));
   });
 };
