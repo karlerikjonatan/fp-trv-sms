@@ -58,21 +58,20 @@ exports.handler = async () => {
         if (response.ok) {
           return response.json();
         }
-        resolve({ statusCode: res.status || 500, body: res.statusText });
+        resolve(RESOLVE_500);
       })
-      .then((data) => {
-        console.log(JSON.stringify(data));
-        // if (COMPARE_DATE > data?.bundles[0]?.occasions[0]?.date) {
-        //   // twilio.messages.create({
-        //   //   body: data?.bundles[0]?.occasions[0]?.date,
-        //   //   from: TWILIO_SMS_FROM,
-        //   //   to: TWILIO_SMS_TO,
-        //   // });
-        // }
+      .then(({ data }) => {
+        if (COMPARE_DATE < data?.bundles[0]?.occasions[0]?.date) {
+          twilio.messages.create({
+            body: data?.bundles[0]?.occasions[0]?.date,
+            from: TWILIO_SMS_FROM,
+            to: TWILIO_SMS_TO,
+          });
+        }
         resolve(RESOLVE_200);
       })
-      .catch((error) => {
-        resolve({ statusCode: error.statusCode || 500, body: error.message });
+      .catch(() => {
+        resolve(RESOLVE_500);
       });
   });
 };
