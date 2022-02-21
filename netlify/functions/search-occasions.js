@@ -61,7 +61,7 @@ exports.handler = async () => {
         resolve(RESOLVE_500);
       })
       .then(({ data }) => {
-        if (COMPARE_DATE < data?.bundles[0]?.occasions[0]?.date) {
+        if (COMPARE_DATE > data?.bundles[0]?.occasions[0]?.date) {
           return data?.bundles[0]?.occasions[0]?.date;
         }
         resolve(RESOLVE_200);

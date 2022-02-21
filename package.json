@@ -1,8 +1,7 @@
 {
   "name": "trafikverket-boka-forarprov-sms",
   "version": "1.0.0",
-  "description": "Send a text message when a driving test occasion is available.",
-  "main": "index.js",
+  "description": "Receive a text message when a driving test occasion is available.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/karlerikjonatan/trafikverket-boka-forarprov-sms.git"
@@ -14,13 +13,7 @@
   ],
   "author": "Jonatan Pettersson <pettersson.jonatan@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/karlerikjonatan/trafikverket-boka-forarprov-sms/issues"
-  },
-  "homepage": "https://github.com/karlerikjonatan/trafikverket-boka-forarprov-sms#readme",
   "dependencies": {
-    "axios": "^0.26.0",
-    "dotenv-flow": "^3.2.0",
     "node-fetch": "^2",
     "twilio": "^3.74.0"
   }
