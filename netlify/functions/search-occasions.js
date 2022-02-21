@@ -48,7 +48,7 @@ const options = {
 const fetch = require("node-fetch");
 const twilio = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-exports.handler = async (event, context) => {
+exports.handler = async function (event, context) {
   try {
     fetch("https://fp.trafikverket.se/boka/occasion-bundles", options)
       .then((response) => response.json())
