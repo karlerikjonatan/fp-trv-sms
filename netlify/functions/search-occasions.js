@@ -20,28 +20,28 @@ const RESOLVE_500 = {
 
 const body = JSON.stringify({
   bookingSession: {
-    socialSecurityNumber: SOCIAL_SECURITY_NUMBER,
-    licenceId: 5,
     bookingModeId: 0,
-    ignoreDebt: false,
-    ignoreBookingHindrance: false,
     examinationTypeId: 0,
     excludeExaminationCategories: [],
-    rescheduleTypeId: 0,
+    ignoreBookingHindrance: false,
+    ignoreDebt: false,
+    licenceId: 5,
     paymentIsActive: false,
     paymentReference: null,
     paymentUrl: null,
+    rescheduleTypeId: 0,
     searchedMonths: 0,
+    socialSecurityNumber: SOCIAL_SECURITY_NUMBER,
   },
   occasionBundleQuery: {
-    startDate: "1970-01-01T00:00:00.000Z",
-    searchedMonths: 0,
+    examinationTypeId: 12,
     locationId: 1000019,
     nearbyLocationIds: [],
-    vehicleTypeId: 2,
-    tachographTypeId: 1,
     occasionChoiceId: 1,
-    examinationTypeId: 12,
+    searchedMonths: 0,
+    startDate: "1970-01-01T00:00:00.000Z",
+    tachographTypeId: 1,
+    vehicleTypeId: 4,
   },
 });
 
