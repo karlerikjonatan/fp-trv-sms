@@ -37,7 +37,7 @@ const body = JSON.stringify({
     examinationTypeId: 12,
     languageId: 0,
     locationId: 1000019,
-    nearbyLocationIds: [1000071, 1000134, 1000326],
+    nearbyLocationIds: [],
     occasionChoiceId: 1,
     searchedMonths: 0,
     startDate: "1970-01-01T00:00:00.000Z",
@@ -64,7 +64,7 @@ exports.handler = async () => {
       })
       .then(({ data }) => {
         if (COMPARE_DATE > data?.bundles[0]?.occasions[0]?.date) {
-          return `${data?.bundles[0]?.occasions[0]?.date}, ${data?.bundles[0]?.occasions[0]?.locationName}`;
+          return data?.bundles[0]?.occasions[0]?.date;
         }
         resolve(RESOLVE_200);
       })

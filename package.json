@@ -1,10 +1,10 @@
 {
-  "name": "trafikverket-boka-forarprov-sms",
+  "name": "boka-forarprov",
   "version": "1.0.0",
-  "description": "Receive a text message when a driving test occasion is available.",
+  "description": "Receive a text message when a driving test occasion is available at Trafikverket.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/karlerikjonatan/trafikverket-boka-forarprov-sms.git"
+    "url": "git+https://github.com/karlerikjonatan/boka-forarprov.git"
   },
   "keywords": [
     "netlify",
