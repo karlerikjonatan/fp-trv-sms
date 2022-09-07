@@ -4,11 +4,8 @@ schedule = "*/5 * * * *"
 [functions."search-nearby-linkoping"]
 schedule = "*/5 * * * *"
 
-[functions."search-nearby-nykoping"]
+[functions."search-nearby-norrkoping"]
 schedule = "*/5 * * * *"
 
 [functions."search-nearby-stockholm"]
-schedule = "*/5 * * * *"
-
-[functions."search-norrkoping"]
 schedule = "*/5 * * * *"

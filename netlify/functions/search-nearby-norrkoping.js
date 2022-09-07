@@ -38,7 +38,8 @@ const body = JSON.stringify({
     languageId: 0,
     // Norrköping
     locationId: 1000329,
-    nearbyLocationIds: [],
+    // Finspång, Nyköping
+    nearbyLocationIds: [1000330, 1000149],
     occasionChoiceId: 1,
     searchedMonths: 0,
     startDate: "1970-01-01T00:00:00.000Z",
