@@ -36,8 +36,10 @@ const body = JSON.stringify({
   occasionBundleQuery: {
     examinationTypeId: 12,
     languageId: 0,
-    locationId: 1000019,
-    nearbyLocationIds: [],
+    // Eskilstuna
+    locationId: 1000005,
+    // Enköping, Uppsala, Västerås
+    nearbyLocationIds: [1000038, 1000071, 1000072],
     occasionChoiceId: 1,
     searchedMonths: 0,
     startDate: "1970-01-01T00:00:00.000Z",
@@ -64,7 +66,7 @@ exports.handler = async () => {
       })
       .then(({ data }) => {
         if (COMPARE_DATE > data?.bundles[0]?.occasions[0]?.date) {
-          return data?.bundles[0]?.occasions[0]?.date;
+          return `${data?.bundles[0]?.occasions[0]?.date} ${data?.bundles[0]?.occasions[0]?.locationName}`;
         }
         resolve(RESOLVE_200);
       })
