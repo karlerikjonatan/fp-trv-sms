@@ -1,14 +1,14 @@
 [functions."search-nearby-eskilstuna"]
-schedule = "*/20 * * * *"
+schedule = "*/5 * * * *"
 
 [functions."search-nearby-linkoping"]
-schedule = "*/10 * * * *"
+schedule = "*/5 * * * *"
 
 [functions."search-nearby-nykoping"]
-schedule = "*/15 * * * *"
+schedule = "*/5 * * * *"
 
 [functions."search-nearby-stockholm"]
 schedule = "*/5 * * * *"
 
 [functions."search-norrkoping"]
-schedule = "*/30 * * * *"
+schedule = "*/5 * * * *"
