@@ -7,5 +7,5 @@
 # [functions."search-nearby-norrkoping"]
 # schedule = "*/5 5-19 * * *"
 
-[functions."search-nearby-stockholm"]
-schedule = "*/5 5-19 * * *"
+# [functions."search-nearby-stockholm"]
+# schedule = "*/5 5-19 * * *"
