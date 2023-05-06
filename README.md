@@ -3,3 +3,5 @@
 # trafikverket-forarprov-sms
 
 Stay updated on the availability of driving tests with text message notifications, as soon as a slot becomes available.
+
+[![Screenshot](https://raw.githubusercontent.com/karlerikjonatan/trafikverket-forarprov-sms/main/screenshot.jpg)]
