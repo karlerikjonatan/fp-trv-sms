@@ -1,11 +1,2 @@
-# [functions."search-nearby-eskilstuna"]
-# schedule = "*/5 5-19 * * *"
-
-# [functions."search-nearby-linkoping"]
-# schedule = "*/5 5-19 * * *"
-
-# [functions."search-nearby-norrkoping"]
-# schedule = "*/5 5-19 * * *"
-
-# [functions."search-nearby-stockholm"]
+# [functions."occasion-bundles"]
 # schedule = "*/5 5-19 * * *"
